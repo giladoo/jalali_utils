@@ -38,18 +38,49 @@ SELECT jalali_part('dow', '2019-07-07'); --> 4
 
 # Installation
 
-Dependencies:
-> sudo apt install postgresql-server-dev-12
+## 1- Dependencies:
 
-Run make to build and install
-> make
+`sudo apt install postgresql-server-dev-15`
 
-> sudo make install
+## 2- Run make to build and install
 
-Run this command in your psql shell:
-> \d your_db_name
+2.1 Download the zip file
 
-> CREATE EXTENSION jalali_utils;
+`sudo unzip master.zip`
+
+2.2 open the folter of content
+
+`cd master`
+
+2.3 Run make command inside the master directory:
+
+`make`
+
+2.4 Run make install too:
+
+`sudo make install`
+
+## 3- Login to postgres account and run psql:
+```
+root@server:#sudo su postgres
+postgres@server:#
+postgres@server:# psql
+postgres=#
+```
+
+## 4- Select the database you want to install extension on it:
+
+`postgres=# \c your_db_name`
+
+`your_db_name=# `
+
+## 5- Add the Extension to the database:
+
+`your_db_name=#  CREATE EXTENSION jalali_utils;`
+
+5.1 To remove the Extension from your database:
+
+`your_db_name=#  DROP EXTENSION jalali_utils;`
 
 # Running tests
 
