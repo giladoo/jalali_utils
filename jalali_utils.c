@@ -76,7 +76,7 @@ Datum format_jalali_timestamp(PG_FUNCTION_ARGS){
     bool with_time = PG_GETARG_BOOL(1);
 
     pg_time_t t = timestamptz_to_time_t(timestamp);
-    pg_tz *tehran = pg_tzset("Asia/Tehran");
+    pg_tz *tehran = pg_tzset("UTC");
     struct pg_tm *tm = pg_localtime(&t, tehran);
     struct pg_tm jdate = tm_to_jalali(tm);
 
@@ -120,7 +120,7 @@ int time_t_to_jalali_part(text* units, pg_time_t* t) {
   int  type, val;
   float8      result;
 
-  pg_tz *tehran = pg_tzset("Asia/Tehran");
+  pg_tz *tehran = pg_tzset("UTC");
   struct pg_tm *tm = pg_localtime(t, tehran);
   struct pg_tm jdatetime = tm_to_jalali(tm);
 
